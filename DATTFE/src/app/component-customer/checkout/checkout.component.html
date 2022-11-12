@@ -1,3 +1,135 @@
-<p>
-  checkout works!
-</p>
+<section class="breadcrumb breadcrumb_bg">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="breadcrumb_iner">
+          <div class="breadcrumb_iner_item">
+            <h2>Producta Checkout</h2>
+            <p>Home <span>-</span> Shop Single</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumb start-->
+
+<!--================Checkout Area =================-->
+<section class="checkout_area padding_top">
+  <div class="container">
+
+    <div class="billing_details">
+      <div class="row">
+        <div class="col-lg-7">
+          <h3>Billing Details</h3>
+          <div class="row contact_form" action="#" method="post" novalidate="novalidate">
+            <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="first" name="fullname" placeholder="Fullname"
+                [(ngModel)]="fullname" />
+                <span class="placeholder" ></span>
+            </div>
+            <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="number" name="phone" placeholder="Phone number"
+                [(ngModel)]="phoneNo" />
+                <span class="placeholder" ></span>
+            </div>
+            <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="email" name="email" placeholder="Email Address"
+                [(ngModel)]="email" />
+                <span class="placeholder" ></span>
+            </div>
+
+            <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="add1" name="address" placeholder="Address"
+                [(ngModel)]="address" />
+                <span class="placeholder" ></span>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <div class="creat_account">
+                <input type="checkbox" id="f-option2" name="selector" [(ngModel)]="createaAccount" />
+                <label for="f-option2">Create an account?</label>
+              </div>
+            </div>
+            <div class="col-md-12 form-group">
+              <div class="creat_account">
+                <h3>Shipping Details</h3>
+              </div>
+              <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"
+                [(ngModel)]="note"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="order_box">
+            <h2>Your Order</h2>
+            <ul class="list">
+              <li>
+                <a>Product
+                  <span>Total</span>
+                </a>
+              </li>
+              <li *ngFor="let item of ShopCartList">
+                <a>{{item.Product.name}} <span>x {{item.Quantity}}</span>
+                  <div class="d-flex justify-content-end">
+                    <span class="font-weight-bold">{{item.TotalPrice | currency:'VND':'VNĐ'}}</span>
+                  </div>
+
+                </a>
+              </li>
+
+            </ul>
+            <ul class="list list_2">
+              <!-- <li>
+                <a>Subtotal
+                  <span>{{total_price | currency:'VND':'VNĐ'}}</span>
+                </a>
+              </li> -->
+              <!-- <li>
+                <a href="#">Shipping
+                  <span>Flat rate: $50.00</span>
+                </a>
+              </li> -->
+              <li>
+                <a>Total
+                  <span class="font-weight-bold">{{total_price | currency:'VND':'VNĐ'}}</span>
+                </a>
+              </li>
+            </ul>
+            <div class="payment_item">
+              <div class="radion_btn">
+                <input type="radio" id="f-option5" name="selector" [(ngModel)]="paymentMethod"
+                  value="Cash on Delivery" />
+                <label for="f-option5">Cash on Delivery</label>
+                <div class="check"></div>
+              </div>
+              <!-- <p>
+                Please send a check to Store Name, Store Street, Store Town,
+                Store State / County, Store Postcode.
+              </p> -->
+            </div>
+            <div class="payment_item active">
+              <div class="radion_btn">
+                <input type="radio" id="f-option6" name="selector" [(ngModel)]="paymentMethod" value="Paypal" />
+                <label for="f-option6">Paypal </label>
+                <img src="img/product/single-product/card.jpg" alt="" />
+                <div class="check"></div>
+              </div>
+              <!-- <p>
+                Please send a check to Store Name, Store Street, Store Town,
+                Store State / County, Store Postcode.
+              </p> -->
+            </div>
+            <div class="creat_account">
+              <input type="checkbox" id="f-option4" name="selector" />
+              <label for="f-option4">I’ve read and accept the </label>
+              <a href="#">terms & conditions*</a>
+            </div>
+            <a class="btn_3 btn" (click)="placeOrder()">Place Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================End Checkout Area =================-->

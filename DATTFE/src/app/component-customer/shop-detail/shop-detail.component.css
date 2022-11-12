@@ -19,3 +19,40 @@
 #myCarousel .carousel-indicators > li.active img {
   opacity: 0.8;
 }
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.custom-scrollbar-js,
+.custom-scrollbar-css {
+  height: 240px;
+  cursor: pointer;
+}
+
+
+.custom-scrollbar-css {
+  overflow-y: scroll;
+}
+
+.custom-scrollbar-css::-webkit-scrollbar {
+  width: 4px;
+
+}
+
+.custom-scrollbar-css::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #FF3368;
+  background-image: linear-gradient(to top, #FF3368 0%, rgb(218, 226, 153) 100%);
+}
+
+
+
+

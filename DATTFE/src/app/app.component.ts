@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DATTFE';
+
+  constructor(
+    private cookieService: CookieService) {}
+
+    ngOnInit(): void {
+      if (!this.cookieService.check('total_quantity')) {
+        this.cookieService.set('total_quantity','0',5, '/');
+      };
+      if (!this.cookieService.check('total_price')) {
+        this.cookieService.set('total_price','0',5, '/');
+      };
+      if (!this.cookieService.check('listCartShop')) {
+        this.cookieService.set('listCartShop',JSON.stringify(new Array()),5, '/');
+      };
+    }
 }

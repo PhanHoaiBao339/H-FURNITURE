@@ -1,3 +1,54 @@
-<p>
-  sign-up works!
-</p>
+<section class="login_part padding_top">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 col-md-6">
+        <div class="login_part_form">
+          <div class="login_part_form_iner">
+            <h3>Welcome to H-FURNITURE! <br>
+              Please Sign up</h3>
+            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+              <div class="col-md-12 form-group p_star">
+                <input type="text" class="form-control" id="name" name="username" value="" placeholder="Username"
+                  [(ngModel)]="username">
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="email" class="form-control" id="password" name="email" value="" placeholder="Email"
+                  [(ngModel)]="email">
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="password" class="form-control" id="password" name="password" value=""
+                  placeholder="Password" [(ngModel)]="password">
+              </div>
+              <div class="col-md-12 form-group p_star">
+                <input type="password" class="form-control" id="password" name="confirmPassword" value=""
+                  placeholder="Confirm Password" [(ngModel)]="confirmPassword">
+              </div>
+              <div class="text-center" style="height: 40px;">
+                <h4 class="text-success m-0 mt-2">{{isRegisterMessageAccept$|async}}</h4>
+                <h4 class="text-danger m-0 mt-2">{{isRegisterMessageError$|async}}</h4>
+              </div>
+              <div class="col-md-12 form-group">
+                <button type="submit" class="btn_3" (click)="register()">
+                  Register
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="login_part_text text-center" style="background-image: -moz-linear-gradient(16deg, #ff005a 0%, #ff5d2d 64%, #ffba00 100%);
+            background-image: -webkit-linear-gradient(16deg, #ff005a 0%, #ff5d2d 64%, #ffba00 100%);
+            background-image: -ms-linear-gradient(16deg, #ff005a 0%, #ff5d2d 64%, #ffba00 100%);
+            background-size: 200% auto;">
+          <div class="login_part_text_iner">
+            <h2>You have an account login here!</h2>
+            <!-- <p>There are advances being made in science and technology
+                        everyday, and a good example of this is the</p> -->
+            <a class="btn_3" routerLink="/sign-in" routerLinkActive="active">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
