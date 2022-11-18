@@ -17,7 +17,7 @@ public class OrderProductServiceImpl implements OrderProductService{
 	@Override
 	public List<OrderProduct> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return orderProductDAO.findAll();
 	}
 
 	@Override

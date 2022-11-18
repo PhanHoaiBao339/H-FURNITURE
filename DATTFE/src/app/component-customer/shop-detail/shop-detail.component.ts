@@ -1,6 +1,6 @@
-import { CategoryService } from './../../service/category.service';
-import { ShoppingCartService } from './../../service/shopping-cart.service';
-import { ProductService } from './../../service/product.service';
+import { CategoryService } from '../../service/client-service/category.service';
+import { ShoppingCartService } from './../../service/client-service/shopping-cart.service';
+import { ProductService } from './../../service/client-service/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 

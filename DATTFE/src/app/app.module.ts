@@ -1,3 +1,12 @@
+import { CommentManagerComponent } from './component-adminstator/comment-manager/comment-manager.component';
+import { NewsManagerComponent } from './component-adminstator/news-manager/news-manager.component';
+import { OrderManagerComponent } from './component-adminstator/order-manager/order-manager.component';
+import { SubstanceManagerComponent } from './component-adminstator/substance-manager/substance-manager.component';
+import { ProductManagerComponent } from './component-adminstator/product-manager/product-manager.component';
+import { CategoryManagerComponent } from './component-adminstator/category-manager/category-manager.component';
+import { AdminLayoutComponent } from './component-adminstator/admin-layout/admin-layout.component';
+import { AdminDashboardComponent } from './component-adminstator/admin-dashboard/admin-dashboard.component';
+import { AccountManagerComponent } from './component-adminstator/account-manager/account-manager.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MenuComponent } from './component-customer/menu/menu.component';
 import { RouterModule } from '@angular/router';
@@ -38,8 +47,16 @@ registerLocaleData(localeVi, 'vi');
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    NewsComponent
-
+    NewsComponent,
+    AdminLayoutComponent,
+    AdminDashboardComponent,
+    AccountManagerComponent,
+    CategoryManagerComponent,
+    ProductManagerComponent,
+    SubstanceManagerComponent,
+    OrderManagerComponent,
+    NewsManagerComponent,
+    CommentManagerComponent
   ],
   imports: [
     BrowserModule,

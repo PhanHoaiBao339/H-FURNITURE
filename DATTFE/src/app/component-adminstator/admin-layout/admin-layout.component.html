@@ -1,0 +1,118 @@
+<div class="sidebar">
+  <div class="logo_details">
+    <img src="../../../assets/img/" style="margin-right: 10px;">
+    <div class="logo_name">H-FURNITURE</div>
+    <i class="bx bx-menu" id="btn"></i>
+  </div>
+  <ul class="nav-list">
+
+    <!-- Search -->
+    <li style="margin-bottom: 15px;">
+      <i class="bx bx-search" style="background-color: #555555; border-top-right-radius: 25px; border-bottom-right-radius: 25px;"></i>
+      <input type="text" placeholder="Search...">
+      <span class="tooltip">Search</span>
+    </li>
+
+    <!-- Dashboard -->
+    <li>
+      <a [routerLink]="['/admin/dashboard']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Dashboard')">
+        <i class='bx bx-clipboard'></i>
+        <span class="link_name">Dashboard</span>
+      </a>
+      <span class="tooltip">Dashboard</span>
+    </li>
+
+    <!-- Account -->
+    <li>
+      <a [routerLink]="['/admin/account']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Account Manager')">
+        <i class="bx bx-user"></i>
+        <span class="link_name">Account</span>
+      </a>
+      <span class="tooltip">Account</span>
+    </li>
+
+    <!-- Category -->
+    <li>
+      <a [routerLink]="['/admin/category']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Category Manager')">
+        <i class='bx bx-category'></i>
+        <span class="link_name">Category</span>
+      </a>
+      <span class="tooltip">Category</span>
+    </li>
+
+    <!-- Product -->
+    <li>
+      <a [routerLink]="['/admin/product']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Product Manager')">
+        <i class='bx bx-package'></i>
+        <span class="link_name">Product</span>
+      </a>
+      <span class="tooltip">Product</span>
+    </li>
+
+    <!-- Substance -->
+    <li>
+      <a [routerLink]="['/admin/substance']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Substance Manager')">
+        <i class='bx bx-paint-roll'></i>
+        <span class="link_name">Substance</span>
+      </a>
+      <span class="tooltip">Substance</span>
+    </li>
+
+    <!-- Order -->
+    <li>
+      <a [routerLink]="['/admin/order']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Order Manager')">
+        <i class='bx bx-dollar-circle'></i>
+        <span class="link_name">Order</span>
+      </a>
+      <span class="tooltip">Order</span>
+    </li>
+
+    <!-- News -->
+    <li>
+      <a [routerLink]="['/admin/news']" routerLinkActive="router-link-active" (click)="changeTitlePage('News Manager')">
+        <i class='bx bx-news'></i>
+        <span class="link_name">News</span>
+      </a>
+      <span class="tooltip">News</span>
+    </li>
+
+    <!-- Commnet -->
+    <li>
+      <a [routerLink]="['/admin/commnet']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Commnet Manager')">
+        <i class='bx bx-comment-detail'></i>
+        <span class="link_name">Commnet</span>
+      </a>
+      <span class="tooltip">Commnet</span>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="bx bx-cog"></i>
+        <span class="link_name">Settings</span>
+      </a>
+      <span class="tooltip">Settings</span>
+    </li>
+    <!--  -->
+    <li class="profile">
+      <div class="profile_details">
+        <div class="profile_content">
+          <div class="name">{{ fullnameofuser | async }}</div>
+          <div class="designation">Admin</div>
+        </div>
+      </div>
+      <i class="bx bx-log-out" id="log_out"></i>
+    </li>
+  </ul>
+</div>
+
+<section class="home-section">
+  <div class="text">{{titlepage$|async}}</div>
+  <router-outlet></router-outlet>
+</section>

@@ -1,0 +1,92 @@
+<div class="m-2">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">List Category Manager</a>
+      <!-- <a class="nav-item nav-link" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Editor</a> -->
+    </div>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active m-2" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="row">
+          <div class="outer-wrapper col-8">
+            <div class="table-wrapper">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">STT</th> <!-- 1 -->
+                    <th scope="col">Tool</th> <!-- 2 -->
+                    <th scope="col">Id</th> <!-- 3 -->
+                    <th scope="col">Category Name</th> <!-- 4 -->
+                    <th scope="col">Active</th> <!-- 12 -->
+                    <th scope="col">Created Day</th> <!-- 13 -->
+                    <th scope="col">Updated Day</th> <!-- 14 -->
+                    <th scope="col">Deleted Day</th> <!-- 15 -->
+                    <th scope="col">Person Updated</th> <!-- 16 -->
+                    <th scope="col">Person Deleted</th> <!-- 17 -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of listCategory;index as i">
+                    <td scope="row">{{i+1}}</td>
+                    <td>
+                      <Button class="btn-outline-success" style="border-radius: 5px;">Edit</Button>
+                      &nbsp;
+                      <button class="btn-outline-danger" style="border-radius: 5px;">Delete</button>
+                    </td>
+                    <td>{{item?.id}}</td>
+                    <td>{{item?.name}}</td>
+                    <td>{{item?.active?'On':'Off'}}</td>
+                    <td>{{item?.createday|date:"dd/MM/yyyy"}}</td>
+                    <td>{{item?.updateday|date:"dd/MM/yyyy"}}</td>
+                    <td>{{item?.deleteday|date:"dd/MM/yyyy"}}</td>
+                    <td>{{item?.persondelte}}</td>
+                    <td>{{item?.personupdate}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label>Id</label>
+                  <input type="text" class="form-control" placeholder="Input Id">
+                </div>
+                <div class="form-group col-md-6">
+                  <label >Name</label>
+                  <input type="password" class="form-control" placeholder="Input Category Name">
+                </div>
+              </div>
+              <div class="forn-group" style="font-size: 1rem;">
+                  <label for="inputAddress">Active</label> <br>
+                  <div class="form-check-inline">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" value="">On - Off
+                    </label>
+                  </div>
+              </div>
+              <br>
+              <div class="btn-groups">
+                <button class="btn btn-primary btn-submit">New</button>
+                <button class="btn btn-primary btn-submit">Save</button>
+                <button class="btn btn-primary btn-submit">Update</button>
+                <button class="btn btn-primary btn-submit">Delete</button>
+              </div>
+          </form>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tab-pane fade m-2" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+
+      </div>
+
+    </div>
+  </nav>
+
+
+</div>

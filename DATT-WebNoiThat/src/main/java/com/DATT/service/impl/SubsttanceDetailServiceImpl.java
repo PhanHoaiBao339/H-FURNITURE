@@ -2,18 +2,23 @@ package com.DATT.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.DATT.dao.SubstanceDetailDAO;
 import com.DATT.entity.SubstanceDetail;
 import com.DATT.service.SubstanceDetailService;
 
 @Service
 public class SubsttanceDetailServiceImpl implements SubstanceDetailService{
 
+	@Autowired
+	SubstanceDetailDAO substanceDetailDAO;
+	
 	@Override
 	public List<SubstanceDetail> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return substanceDetailDAO.findAll();
 	}
 
 	@Override

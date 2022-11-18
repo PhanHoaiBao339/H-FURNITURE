@@ -1,3 +1,12 @@
+import { CommentManagerComponent } from './component-adminstator/comment-manager/comment-manager.component';
+import { NewsManagerComponent } from './component-adminstator/news-manager/news-manager.component';
+import { SubstanceManagerComponent } from './component-adminstator/substance-manager/substance-manager.component';
+import { OrderManagerComponent } from './component-adminstator/order-manager/order-manager.component';
+import { CategoryManagerComponent } from './component-adminstator/category-manager/category-manager.component';
+import { ProductManagerComponent } from './component-adminstator/product-manager/product-manager.component';
+import { AccountManagerComponent } from './component-adminstator/account-manager/account-manager.component';
+import { AdminDashboardComponent } from './component-adminstator/admin-dashboard/admin-dashboard.component';
+import { AdminLayoutComponent } from './component-adminstator/admin-layout/admin-layout.component';
 import { NewsComponent } from './component-customer/news/news.component';
 import { ForgotPasswordComponent } from './component-customer/forgot-password/forgot-password.component';
 import { SignUpComponent } from './component-customer/sign-up/sign-up.component';
@@ -32,7 +41,20 @@ const routes: Routes = [
 
     ]
   },
-
+  { path: 'admin', redirectTo: '/admin/dashboard', pathMatch: 'full' },
+  {
+    path: 'admin', component: AdminLayoutComponent, title: 'Admin page',
+    children: [
+      { path: 'dashboard', component: AdminDashboardComponent, title: 'Dashboard', },
+      { path: 'account', component: AccountManagerComponent, title: 'Account Manager', },
+      { path: 'product', component: ProductManagerComponent, title: 'Product Manager', },
+      { path: 'category', component: CategoryManagerComponent, title: 'Category Manager', },
+      { path: 'order', component: OrderManagerComponent, title: 'Order Manager', },
+      { path: 'substance', component: SubstanceManagerComponent, title: 'Substance Manager', },
+      { path: 'news', component: NewsManagerComponent, title: 'News Manager', },
+      { path: 'comment', component: CommentManagerComponent, title: 'Comment Manager', },
+    ]
+  },
 ];
 
 @NgModule({

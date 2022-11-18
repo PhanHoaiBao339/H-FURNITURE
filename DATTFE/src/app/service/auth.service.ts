@@ -22,6 +22,7 @@ export class AuthService {
   private loggedSuccess: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private loggedAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private loggedDire: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private loggedToken: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private loggedUsername: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private loggedFullname: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private loggedEmail: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -39,7 +40,9 @@ export class AuthService {
       resp => {
         if (resp.message == 'Successfully') {
           this.loggedSuccess.next(true);
+          this.loginMessageError.next("")
           this.loginMessageAccept.next("Logged in successfully!");
+          this.loggedToken.next(resp.token);
           this.loggedFullname.next(resp.fullname);
           this.loggedUsername.next(resp.username);
           this.loggedEmail.next(resp.email);
@@ -48,14 +51,13 @@ export class AuthService {
           // this.loggedGender.next(resp.gender);
           // this.loggedBirthday.next(resp.birthday);
           // this.loggedPhoto.next(resp.photo);
-          switch (resp.role) {
-            case 'ADMIN':
-              this.loggedAdmin.next(true);
-              break;
-            case 'DIRE':
-              this.loggedDire.next(true);
-              break;
+
+          console.log(resp.role);
+
+          if(resp.role == 'ROLE_ADMIN'){
+            this.loggedAdmin.next(true);
           }
+
           setTimeout(() => this.router.navigate(["/home"]), 1000);
         } else {
           this.loginMessageError.next("Your account or password is incorrect!")
@@ -109,8 +111,10 @@ export class AuthService {
   public Forbidden() {
     let authTrue = new BehaviorSubject<boolean>(true).asObservable;
     if (this.isLoggedAdmin != authTrue || this.isLoggedDire != authTrue) {
-      this.loginMessageError.next("You do not have permission to access it!")
+      this.loginMessageAccept.next("");
+      this.loginMessageError.next("You do not have permission to access it!");
     } else {
+      this.loginMessageError.next("");
       this.loginMessageAccept.next("Logged in successfully!");
     }
   }
@@ -184,7 +188,9 @@ export class AuthService {
   public isLoggedDire(): Observable<boolean> {
     return this.loggedDire.asObservable();
   }
-
+  public getLoggedToken(): Observable<string>{
+    return this.loggedToken.asObservable();
+  }
   public getLoggedUsername(): Observable<string> {
     return this.loggedUsername.asObservable();
   }
@@ -200,11 +206,9 @@ export class AuthService {
   public getLoggedAddress(): Observable<string> {
     return this.loggedAddress.asObservable();
   }
-
   public getLoginMessageAccept(): Observable<string> {
     return this.loginMessageAccept.asObservable();
   }
-
   public getLoginMessageError(): Observable<string> {
     return this.loginMessageError.asObservable();
   }

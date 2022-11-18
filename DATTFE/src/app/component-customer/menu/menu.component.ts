@@ -1,7 +1,7 @@
+import { ShoppingCartService } from './../../service/client-service/shopping-cart.service';
 import { AuthService } from './../../service/auth.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ShoppingCartService } from './../../service/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
 
@@ -16,7 +16,14 @@ export class MenuComponent implements OnInit {
     private shoppingCartService: ShoppingCartService,
     private authService: AuthService
   ) { }
+
   public isLoggedSuccess$: Observable<boolean> = new Observable<boolean>();
+  public isLoggedAdmin$: Observable<boolean> = new Observable<boolean>();
+  public isLoggedUsername$: Observable<string> = new Observable<string>();
+  public isLoggedFullname$: Observable<string> = new Observable<string>();
+
+  public fullnameofuser: Observable<string> = new Observable<string>();
+
   public total_quantity: any;
 
   ngOnInit() {
@@ -33,17 +40,16 @@ export class MenuComponent implements OnInit {
 
   private checkLogin() {
     this.isLoggedSuccess$ = this.authService.isLoggedSuccess();
-    // this.isLoggedAdmin$ = this.authService.isLoggedAdmin();
-    // this.isLoggedDire$ = this.authService.isLoggedDire();
-    // this.isLoggedFullname$ = this.authService.getLoggedFullname();
-    // this.isLoggedFullname$.subscribe(data => {
-    //   if (data == null) {
-    //     this.fullnameofuser = this.authService.getLoggedUsername();;
-    //   } else {
-    //     this.fullnameofuser = this.authService.getLoggedFullname();
-    //   }
-    // })
-    // this.authService.loginMessageReset();
+    this.isLoggedAdmin$ = this.authService.isLoggedAdmin();
+    this.isLoggedFullname$ = this.authService.getLoggedFullname();
+    this.isLoggedFullname$.subscribe(data => {
+      if (data == null) {
+        this.fullnameofuser = this.authService.getLoggedUsername();;
+      } else {
+        this.fullnameofuser = this.authService.getLoggedFullname();
+      }
+    })
+    this.authService.ResetMessage();
 
   }
 

@@ -1,8 +1,8 @@
+import { OrderAndOrderdetailService } from './../../service/client-service/order-and-orderdetail.service';
+import { ShoppingCartService } from './../../service/client-service/shopping-cart.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { OrderAndOrderdetailService } from './../../service/order-and-orderdetail.service';
 import { AuthService } from './../../service/auth.service';
-import { ShoppingCartService } from './../../service/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -102,13 +102,9 @@ export class CheckoutComponent implements OnInit {
             });
           }
         }
-      );
-
-
+      ).unsubscribe();
     }
   }
-
-
 
   private createAccountGuest() {
     this.authService.registerGuest(this.email, this.fullname, this.phoneNo, this.address);

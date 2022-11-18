@@ -18,9 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.DATT.dao.AccountDAO;
-import com.DATT.dao.AuthorityDAO;
-import com.DATT.dao.RoleDAO;
 import com.DATT.entity.Account;
 import com.DATT.entity.Authority;
 import com.DATT.entity.Role;
@@ -32,6 +29,9 @@ import com.DATT.payload.ResponseMessage;
 import com.DATT.payload.SignupRequest;
 import com.DATT.security.jwt.JwtUtils;
 import com.DATT.security.service.CustomUserDetail;
+import com.DATT.service.AccountService;
+import com.DATT.service.AuthorityService;
+import com.DATT.service.RoleService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -41,13 +41,13 @@ public class AuthRestController {
 	AuthenticationManager authenticationManager;
 
 	@Autowired
-	AccountDAO accountDAO;
+	AccountService accountService;
 
 	@Autowired
-	AuthorityDAO authorityDAO;
+	AuthorityService authorityService;
 
 	@Autowired
-	RoleDAO roleDAO;
+	RoleService roleService;
 
 	@Autowired
 	PasswordEncoder encoder;
@@ -78,10 +78,10 @@ public class AuthRestController {
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-		if (accountDAO.existsByUsername(signUpRequest.getUsername())) {
+		if (accountService.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity.ok(new ResponseMessage(false, "Username is already taken!"));
 		}
-		if (accountDAO.existsByEmail(signUpRequest.getEmail())) {
+		if (accountService.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity.ok(new ResponseMessage(false, "Email is already taken!"));
 		}
 		// Create new user's account
@@ -89,12 +89,12 @@ public class AuthRestController {
 				encoder.encode(signUpRequest.getPassword()));
 		account.setActive(true);
 		account.setCreateday(new Date());
-		accountDAO.save(account);
+		accountService.create(account);
 
-		Role role = roleDAO.findById("USER").get();
+		Role role = roleService.findById("USER");
 
 		Authority authority = new Authority(null, account, role);
-		authorityDAO.save(authority);
+		authorityService.create(authority);
 
 		return ResponseEntity.ok(new ResponseMessage(true, "User registered successfully!"));
 	}
@@ -106,10 +106,10 @@ public class AuthRestController {
 
 		do {
 			usernameGuest = "guest" + UUID.randomUUID().toString().substring(0, 10);
-		} while (accountDAO.existsById(usernameGuest));
+		} while (accountService.existsById(usernameGuest));
 
-		if (accountDAO.existsByEmail(createGuestRequest.getEmail())) {
-			Account account = accountDAO.findByEmail(createGuestRequest.getEmail());
+		if (accountService.existsByEmail(createGuestRequest.getEmail())) {
+			Account account = accountService.findByEmail(createGuestRequest.getEmail());
 			return ResponseEntity.ok(new CreateGuestRespone(false, "Email is already taken!", account.getUsername()));
 		} else {
 			// Create new user's account
@@ -122,11 +122,11 @@ public class AuthRestController {
 			account.setAddress(createGuestRequest.getAddress());
 			account.setActive(true);
 			account.setCreateday(new Date());
-			accountDAO.save(account);
+			accountService.create(account);
 
-			Role role = roleDAO.findById("USER").get();
+			Role role = roleService.findById("USER");
 			Authority authority = new Authority(null, account, role);
-			authorityDAO.save(authority);
+			authorityService.create(authority);
 			return ResponseEntity.ok(new CreateGuestRespone(true, "User registered successfully!", usernameGuest));
 		}
 	}

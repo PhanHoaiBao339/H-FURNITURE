@@ -1,0 +1,91 @@
+<div class="m-2">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">List Order Manager</a>
+      <a class="nav-item nav-link" id="nav-table-orderdetail-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">List Order Detail Manager</a>
+    </div>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active m-2" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="outer-wrapper">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">STT</th> <!-- 1 -->
+                  <th scope="col">View</th>
+                  <th scope="col">Id</th> <!-- 3 -->
+                  <th scope="col">Username</th> <!-- 4 -->
+                  <th scope="col">Fullname</th> <!-- 5 -->
+                  <th scope="col">Phone</th> <!-- 6 -->
+                  <th scope="col">Address</th> <!-- 7 -->
+                  <th scope="col">Note</th> <!-- 8 -->
+                  <th scope="col">Payment Method</th> <!-- 9 -->
+                  <th scope="col">Stut ID</th> <!-- 10 -->
+                  <th scope="col">Created Day</th> <!-- 11 -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listOrder;index as i" >
+                  <td scope="row">{{i+1}}</td>
+                  <td><button style="background: none; border: none;" (click)="showDetail(item.id)"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+                  <!-- <td>
+                    <Button class="btn-outline-success" style="border-radius: 5px;">Edit</Button>
+                    &nbsp;
+                    <button class="btn-outline-danger" style="border-radius: 5px;">Delete</button>
+                  </td> -->
+                  <td>{{item?.id}}</td>
+                  <td>{{item?.account.username}}</td>
+                  <td>{{item?.fullname}}</td>
+                  <td>{{item?.phone}}</td>
+                  <td>{{item?.address}}</td>
+                  <td>{{item?.note}}</td>
+                  <td>{{item?.paymentmethod}}</td>
+                  <td>{{item?.statusOrder.name}}</td>
+                  <td>{{item?.createDate|date:"dd/MM/yyyy"}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade m-2" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="outer-wrapper">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">STT</th> <!-- 1 -->
+                  <!-- <th scope="col">Tool</th> -->
+                  <th scope="col">Id</th> <!-- 3 -->
+                  <th scope="col">Order ID</th> <!-- 4 -->
+                  <th scope="col">Product ID</th> <!-- 5 -->
+                  <th scope="col">Price</th> <!-- 6 -->
+                  <th scope="col">Quantity</th> <!-- 7 -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listOrderDetail;index as i">
+                  <td [width]="50" scope="row">{{i+1}}</td>
+                  <!-- <td [width]="200">
+                    <Button class="btn-outline-success" style="border-radius: 5px;">Edit</Button>
+                    &nbsp;
+                    <button class="btn-outline-danger" style="border-radius: 5px;">Delete</button>
+                  </td> -->
+                  <td>{{item?.id}}</td>
+                  <td>{{item?.orderProduct.id}}</td>
+                  <td>{{item?.product.id}}</td>
+                  <td [width]="200" id="price">{{item?.price|currency:'VND':'VNĐ'}}</td>
+                  <td>{{item?.quantity}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button style="width: 40px; height: 40px;" class="btn btn-info rounded-circle"><i class="fa fa-undo" aria-hidden="true"></i></button>
+          <span> Reload</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</div>

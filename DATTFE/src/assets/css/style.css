@@ -39,7 +39,8 @@ input:focus {
 
 /* line 24, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
 .section_padding {
-  padding: 140px 0px;
+  /* padding: 140px 0px; */
+  padding: 60px 0px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
@@ -2123,8 +2124,9 @@ ul {
 /* line 20, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
 .main_menu .main-menu-item ul li .nav-link {
   color: #000;
-  font-size: 15px;
-  padding: 36px 23px;
+  font-size: 16px;
+  /* padding: 36px 23px; */
+  padding: 36px 32px;
   font-family: "Poppins", sans-serif;
   text-transform: capitalize;
   line-height: 12px;
@@ -7412,22 +7414,29 @@ h6 {
 
 /* line 1, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_breadcrumb.scss */
 .breadcrumb_bg {
-  background-image: url("../img/breadcrumb.png");
+  /* background-image: url("../img/breadcrumb.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+  background-position-x: 250px;
+  background-repeat: no-repeat;
+  background-color: #ECFDFF;
 }
 
 /* line 5, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_breadcrumb.scss */
 .breadcrumb {
   position: relative;
   z-index: 1;
-  text-align: left;
+  /* text-align: left; */
+  text-align: center;
 }
 
 /* line 10, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_breadcrumb.scss */
 .breadcrumb .breadcrumb_iner {
-  height: 475px;
+  /* height: 475px;
+  width: 100%;
+  display: table; */
+  height: 180px;
   width: 100%;
   display: table;
 }
@@ -7443,7 +7452,8 @@ h6 {
   color: #222222;
   font-size: 36px;
   font-weight: 700;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
+  margin-top: 50px;
   text-transform: capitalize;
 }
 

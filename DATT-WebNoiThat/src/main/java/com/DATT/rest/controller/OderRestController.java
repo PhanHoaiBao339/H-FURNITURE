@@ -1,10 +1,12 @@
 package com.DATT.rest.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,9 +66,20 @@ public class OderRestController {
 		for (ShopCartList item : oderDetailRequest.getList()) {
 			Product product = productService.findById(item.getProduct().getId());
 			orderProductDetailService.create(
-					new OrderProductDetail(null, item.getTotalPrice(), item.getQuantity(), orderProduct, product));
+					new OrderProductDetail(null, item.getTotalprice(), item.getQuantity(), orderProduct, product));
 		}
 		return ResponseEntity.ok(new ResponseMessage(true, "Order Success!"));
+	}
+	
+	
+	@GetMapping("/allorderdata")
+	public List<OrderProduct> getAllOrder(){
+		return orderProductService.findAll();
+	}
+	
+	@GetMapping("/allorderdetaildata")
+	public List<OrderProductDetail> getAllOrderDetail(){
+		return orderProductDetailService.findAll();
 	}
 
 }

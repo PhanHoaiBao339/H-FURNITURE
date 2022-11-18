@@ -16,8 +16,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public List<Account> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return accountDAO.findAll();
 	}
 
 	@Override
@@ -26,21 +25,43 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account create(Account t) {
-		// TODO Auto-generated method stub
-		return null;
+	public Account create(Account t) {	
+		return accountDAO.save(t);
 	}
 
 	@Override
 	public Account update(Account t) {
-		// TODO Auto-generated method stub
-		return null;
+		return accountDAO.save(t);
 	}
 
 	@Override
 	public void delete(String id) {
-		// TODO Auto-generated method stub
-
+		accountDAO.deleteById(id);
 	}
+
+	@Override
+	public boolean existsById(String id) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean existsByUsername(String username) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean existsByEmail(String email) {
+		
+		return false;
+	}
+
+	@Override
+	public Account findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 
 }

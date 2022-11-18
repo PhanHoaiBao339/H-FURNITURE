@@ -32,6 +32,7 @@ public class Product implements Serializable {
 	private String image1;
 	private String image2;
 	private String image3;
+	private Integer quantity;
 	private Boolean available;
 	private Boolean status;
 	private String substancedes;

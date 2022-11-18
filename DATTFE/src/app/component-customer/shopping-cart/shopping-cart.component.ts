@@ -1,5 +1,5 @@
+import { ShoppingCartService } from './../../service/client-service/shopping-cart.service';
 import { Router } from '@angular/router';
-import { ShoppingCartService } from './../../service/shopping-cart.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 

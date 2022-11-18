@@ -1,0 +1,151 @@
+<div class="m-2">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">List Account Manager</a>
+      <a class="nav-item nav-link" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Editor</a>
+    </div>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active m-2" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="outer-wrapper">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">STT</th> <!-- 1 -->
+                  <th scope="col">Tool</th> <!-- 2 -->
+                  <th scope="col">Username</th> <!-- 3 -->
+                  <th scope="col">Password</th> <!-- 4 -->
+                  <th scope="col">Fullname</th> <!-- 5 -->
+                  <th scope="col">Email</th> <!-- 6 -->
+                  <th scope="col">Gender</th> <!-- 7 -->
+                  <th scope="col">Birthday</th> <!-- 8 -->
+                  <th scope="col">Phone</th> <!-- 9 -->
+                  <th scope="col">Address</th> <!-- 10 -->
+                  <th scope="col">Photo</th> <!-- 11 -->
+                  <th scope="col">Active</th> <!-- 12 -->
+                  <th scope="col">Created Day</th> <!-- 13 -->
+                  <th scope="col">Updated Day</th> <!-- 14 -->
+                  <th scope="col">Deleted Day</th> <!-- 15 -->
+                  <th scope="col">Person Updated</th> <!-- 16 -->
+                  <th scope="col">Person Deleted</th> <!-- 17 -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listAccount;index as i">
+                  <td scope="row">{{i+1}}</td>
+                  <td>
+                    <Button class="btn-outline-success" style="border-radius: 5px;">Edit</Button>
+                    &nbsp;
+                    <button class="btn-outline-danger" style="border-radius: 5px;">Delete</button>
+                  </td>
+                  <td>{{item?.username}}</td>
+                  <td>************</td>
+                  <td>{{item?.fullname}}</td>
+                  <td>{{item?.email}}</td>
+                  <td>{{item?.gender?'Male':'Female'}}</td>
+                  <td>{{item?.birthday|date:"dd/MM/yyyy"}}</td>
+                  <td>{{item?.phone}}</td>
+                  <td>{{item?.address}}</td>
+                  <td class="td-center"><img class="show-img-on-tabale" src="{{item?.photo}}" alt="no-avatar"></td>
+                  <td>{{item?.active?'On':'Off'}}</td>
+                  <td>{{item?.createday|date:"dd/MM/yyyy"}}</td>
+                  <td>{{item?.updateday|date:"dd/MM/yyyy"}}</td>
+                  <td>{{item?.deleteday|date:"dd/MM/yyyy"}}</td>
+                  <td>{{item?.persondelte}}</td>
+                  <td>{{item?.personupdate}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade m-2" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <form class="row">
+          <div class="col-3">
+            <div class="preview">
+              <img id="img-preview" class="avatar" src="" />
+              <label class="text-avatar" for="file-input">Upload Image</label>
+              <!-- <p id="img-path"></p> -->
+              <input (change)="previewImg($event)" type="file" id="file-input" />
+            </div>
+
+          </div>
+          <div class="col-9">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Username</label>
+                <input type="text" class="form-control" placeholder="Input Username">
+              </div>
+              <div class="form-group col-md-6">
+                <label >Password</label> <span style="font-style: italic; font-size: 12px; color: #818181;">&nbsp;&nbsp; Khuyến nghị mật khẩu nên chứa các ký tự đặc biệt, số và chữ in hoa.</span>
+                <input type="password" class="form-control" placeholder="Input Password">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="Input Email">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Fullname</label>
+                <input type="text" class="form-control" placeholder="Fullname">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Phone</label>
+                <input type="number" class="form-control" placeholder="Input Phone Number">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Birthday</label>
+                <input type="date" class="form-control" placeholder="Birthday">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Quận 1, Hồ Chí Minh">
+            </div>
+            <div class="forn-group row" style="font-size: 1rem;">
+              <div class="col">
+                <label for="inputAddress">Gender</label> <br>
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optradio" value="true">Male
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="optradio" value="false">Female
+                  </label>
+                </div>
+              </div>
+
+              <div class="col">
+                <label for="inputAddress">Active</label> <br>
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">On - Off
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <div class="btn-groups">
+              <button class="btn btn-primary btn-submit">New</button>
+              <button class="btn btn-primary btn-submit">Save</button>
+              <button class="btn btn-primary btn-submit">Update</button>
+              <button class="btn btn-primary btn-submit">Delete</button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+  </nav>
+
+
+</div>

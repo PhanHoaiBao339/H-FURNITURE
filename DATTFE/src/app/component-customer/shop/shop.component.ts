@@ -1,5 +1,5 @@
-import { CategoryService } from './../../service/category.service';
-import { ProductService } from './../../service/product.service';
+import { ProductService } from './../../service/client-service/product.service';
+import { CategoryService } from '../../service/client-service/category.service';
 import { Component, OnInit } from '@angular/core';
 import { data } from 'jquery';
 
