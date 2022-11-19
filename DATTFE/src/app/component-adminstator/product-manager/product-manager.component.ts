@@ -28,7 +28,7 @@ export class ProductManagerComponent implements OnInit {
   }
 
   // IMG REIVIEW
-  public previewImg(e:any){
+  public previewImg1(e:any){
     const image = <HTMLInputElement>document.getElementById('img-preview');
 
     if (e.target.files.length) {
@@ -39,9 +39,6 @@ export class ProductManagerComponent implements OnInit {
       var path = pathlist[0].name;
       console.log(path);
     }
-
   }
-
-
 
 }

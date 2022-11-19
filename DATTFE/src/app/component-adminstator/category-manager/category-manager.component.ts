@@ -19,11 +19,6 @@ export class CategoryManagerComponent implements OnInit {
   public listCategory: any;
 
   public getAllCategoryDada() {
-    // this.accountManagerService.getAllDataAccount().subscribe((resp) => {
-    //   this.listAccount = resp;
-    //  console.log(this.listAccount);
-    // });
-
     this.categoryManagerService.getAllDataCategory().subscribe(
       data => {
         this.listCategory = data
@@ -31,22 +26,5 @@ export class CategoryManagerComponent implements OnInit {
       }
     )
   }
-
-
-  public previewImg(e:any){
-    const image = <HTMLInputElement>document.getElementById('img-preview');
-
-    if (e.target.files.length) {
-      const src = URL.createObjectURL(e.target.files[0]);
-      image.src = src;
-
-      var pathlist = e.target.files;
-      var path = pathlist[0].name;
-      console.log(path);
-    }
-
-  }
-
-
 
 }

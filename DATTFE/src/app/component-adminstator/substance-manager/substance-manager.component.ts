@@ -13,8 +13,8 @@ export class SubstanceManagerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.getAllSubstanceProductDada();
-    // this.getAllSubstanceDetailDada();
+    this.getAllSubstanceProductDada();
+    this.getAllSubstanceDetailDada();
   }
 
   public listSubstanceProduct: any;

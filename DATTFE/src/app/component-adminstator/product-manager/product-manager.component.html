@@ -70,15 +70,17 @@
 
       <div class="tab-pane fade m-2" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <form class="row">
+          <!-- IMG -->
           <div class="col-3">
             <div class="preview">
               <img id="img-preview" class="avatar" src="" />
               <label class="text-avatar" for="file-input">Upload Image</label>
               <!-- <p id="img-path"></p> -->
-              <input (change)="previewImg($event)" type="file" id="file-input" />
+              <input (change)="previewImg1($event)" type="file" id="file-input" />
             </div>
-
           </div>
+
+          <!-- FORM -->
           <div class="col-9">
             <div class="form-row">
               <div class="form-group col-md-6">

@@ -24,7 +24,7 @@ export class OrderManagerComponent implements OnInit {
     this.orderManagerService.getAllOrder().subscribe(
       data => {
         this.listOrder = data
-        console.log(data);
+        //console.log(data);
       }
     )
   }
@@ -33,7 +33,7 @@ export class OrderManagerComponent implements OnInit {
     this.orderManagerService.getAllOrderDetail().subscribe(
       data => {
         this.listOrderDetail = data
-        console.log(data);
+       //console.log(data);
       }
     )
   }

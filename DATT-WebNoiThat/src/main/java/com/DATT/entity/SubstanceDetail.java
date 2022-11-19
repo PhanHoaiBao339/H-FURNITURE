@@ -20,13 +20,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name = "SubstanceDetail")
+@Table(name = "substancedetail")
 public class SubstanceDetail implements Serializable {
 	@Id
 	private String id;
 	private String name;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "substanceDetail")
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "substancedetail")
 	List<SubstanceProducts> substanceProducts;
 }

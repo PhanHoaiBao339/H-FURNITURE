@@ -17,7 +17,6 @@ public class SubsttanceDetailServiceImpl implements SubstanceDetailService{
 	
 	@Override
 	public List<SubstanceDetail> findAll() {
-		// TODO Auto-generated method stub
 		return substanceDetailDAO.findAll();
 	}
 

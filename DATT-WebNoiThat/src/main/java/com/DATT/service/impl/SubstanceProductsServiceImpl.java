@@ -17,7 +17,6 @@ public class SubstanceProductsServiceImpl implements SubstanceProductsService{
 	
 	@Override
 	public List<SubstanceProducts> findAll() {
-		// TODO Auto-generated method stub
 		return substanceProductsDAO.findAll();
 	}
 

@@ -17,14 +17,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name = "Substance_Products")
+@Table(name = "substance_products")
 public class SubstanceProducts implements Serializable{
 @Id
 private Integer id;
 
 @ManyToOne
 @JoinColumn(name="Substancedetailid")
-private SubstanceDetail substanceDetail;
+private SubstanceDetail substancedetail;
 
 @ManyToOne
 @JoinColumn(name = "Productid")
